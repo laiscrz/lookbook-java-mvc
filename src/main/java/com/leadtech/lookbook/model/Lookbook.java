@@ -3,6 +3,7 @@ package com.leadtech.lookbook.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,4 +38,14 @@ public class Lookbook {
 
 	@Valid
 	private List<ClothingItem> clothingItems;
+	
+	@Override
+	public String toString() {
+	    return "Lookbook{" +
+	            "id=" + id +
+	            ", nome='" + nome + '\'' +
+	            '}';
+	}
+
+
 }

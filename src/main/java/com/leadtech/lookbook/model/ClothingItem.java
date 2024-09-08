@@ -49,4 +49,13 @@ public class ClothingItem {
     @ManyToMany(mappedBy = "clothingItems")
     @Valid
     private List<Lookbook> lookbooks;
+    
+    @Override
+    public String toString() {
+        return "ClothingItem{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
+
 }
