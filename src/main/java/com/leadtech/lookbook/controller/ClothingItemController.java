@@ -61,9 +61,19 @@ public class ClothingItemController {
     // Deletar uma peça de roupa pelo ID
     @GetMapping("/clothing/deletar/{id}")
     public ModelAndView deletar(@PathVariable Long id) {
-        clothingItemService.deletar(id);
-        return new ModelAndView("redirect:/clothing");
+        ModelAndView mv = new ModelAndView("clothing/list"); // Alterado para carregar a página de listagem
+        try {
+            clothingItemService.deletar(id);
+            mv.setViewName("redirect:/clothing"); // Redirecionar se a exclusão for bem-sucedida
+        } catch (Exception e) {
+            // Captura a exceção de integridade referencial
+            mv.addObject("clothingItems", clothingItemService.listarTodos()); // Carrega a lista de itens novamente
+            mv.addObject("errorMessage", "A peça está vinculada a um lookbook. Remova-a do lookbook primeiro antes de excluir.");
+        }
+        return mv;
     }
+
+
 
     // Exibir detalhes de uma peça de roupa específica
     @GetMapping("/clothing/detalhes/{id}")

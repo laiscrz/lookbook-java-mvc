@@ -9,6 +9,7 @@
 <body>
 	<div class="container">
 		<h1 class="my-4">Nova Peça de Roupa</h1>
+
 		<form th:action="@{/clothing}" th:object="${clothingItem}" method="post" class="form-group">
 			<input type="hidden" th:field="*{id}" />
 

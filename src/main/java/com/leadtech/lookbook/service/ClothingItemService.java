@@ -37,7 +37,12 @@ public class ClothingItemService {
     }
 
     public void deletar(Long id) {
+        ClothingItem clothingItem = buscarPorId(id);
+        if (!clothingItem.getLookbooks().isEmpty()) {
+            throw new RuntimeException("A peça está vinculada a um lookbook");
+        }
         clothingItemRepository.deleteById(id);
     }
+
 }
 
