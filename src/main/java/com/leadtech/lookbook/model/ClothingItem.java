@@ -5,6 +5,8 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,20 +23,28 @@ public class ClothingItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String categoria;
+    
+    @Enumerated(EnumType.STRING)
+    private ListaCategoria categoria;
     private String cor;
-    private String tamanho;
+    
+    @Enumerated(EnumType.STRING)
+    private ListaTamanho tamanho;
     
     @Column(name = "imagem_url")
     private String imagemURL;
     private String material;
     private String marca;
-    private String padrao;
+    
+    @Enumerated(EnumType.STRING)
+    private ListaPadrao padrao;
     private Double preco;
     
     @Column(name = "data_cadastro")
     private LocalDate dataCadrasto;
-    private String sazonalidade;
+    
+    @Enumerated(EnumType.STRING)
+    private ListaSazonalidade sazonalidade;
     
     @ManyToMany(mappedBy = "clothingItems")
     @Valid
