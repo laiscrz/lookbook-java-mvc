@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Peça de Roupa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <style>
+        .clothing-item-img {
+            max-width: 100%;
+            height: auto;
+        }
+        .detail-container {
+            margin-top: 20px;
+        }
+        .detail-container dt {
+            font-weight: bold;
+        }
+        .detail-container dd {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Detalhes da Peça de Roupa</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <img th:src="@{${clothingItem.imagemURL}}" alt="Imagem da peça" class="clothing-item-img img-fluid">
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-3">Nome:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.nome}">Nome da peça</dd>
+
+                            <dt class="col-sm-3">Categoria:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.categoria}">Categoria da peça</dd>
+
+                            <dt class="col-sm-3">Cor:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.cor}">Cor da peça</dd>
+
+                            <dt class="col-sm-3">Tamanho:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.tamanho}">Tamanho da peça</dd>
+
+                            <dt class="col-sm-3">Material:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.material}">Material da peça</dd>
+
+                            <dt class="col-sm-3">Marca:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.marca}">Marca da peça</dd>
+
+                            <dt class="col-sm-3">Padrão:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.padrao}">Padrão da peça</dd>
+
+                            <dt class="col-sm-3">Preço:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.preco}">Preço da peça</dd>
+
+                            <dt class="col-sm-3">Sazonalidade:</dt>
+                            <dd class="col-sm-9" th:text="${clothingItem.sazonalidade}">Sazonalidade da peça</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/clothing" class="btn btn-primary mt-4">Voltar</a>
+    </div>
+</body>
+</html>

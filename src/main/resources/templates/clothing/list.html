@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Peças</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Peças de Roupa</h1>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Cor</th>
+                    <th>Tamanho</th>
+                    <th>Ações</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${clothingItems}">
+                    <td th:text="${item.nome}">Nome</td>
+                    <td th:text="${item.categoria}">Categoria</td>
+                    <td th:text="${item.cor}">Cor</td>
+                    <td th:text="${item.tamanho}">Tamanho</td>
+                    <td>
+                        <a th:href="@{'/clothing/editar/' + ${item.id}}" class="btn btn-primary btn-sm">Editar</a>
+                        <a th:href="@{'/clothing/deletar/' + ${item.id}}" class="btn btn-danger btn-sm">Deletar</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/clothing/detalhes/' + ${item.id}}" class="btn btn-info btn-sm">Detalhes</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/clothing/novo" class="btn btn-success mt-3">Adicionar Nova Peça</a>
+        <a href="/lookbooks" class="btn btn-primary mt-3">Lista de lookbooks</a>
+    </div>
+</body>
+</html>

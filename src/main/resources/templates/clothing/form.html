@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nova Peça de Roupa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Nova Peça de Roupa</h1>
+        <form th:action="@{/clothing}" th:object="${clothingItem}" method="post" class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" class="form-control" th:field="*{nome}" />
+            <label for="categoria" class="mt-3">Categoria</label>
+            <input type="text" id="categoria" class="form-control" th:field="*{categoria}" />
+            <label for="cor" class="mt-3">Cor</label>
+            <input type="text" id="cor" class="form-control" th:field="*{cor}" />
+            <label for="tamanho" class="mt-3">Tamanho</label>
+            <input type="text" id="tamanho" class="form-control" th:field="*{tamanho}" />
+            <button type="submit" class="btn btn-success mt-4">Salvar</button>
+        </form>
+    </div>
+</body>
+</html>
