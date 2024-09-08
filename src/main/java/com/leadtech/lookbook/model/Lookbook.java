@@ -3,7 +3,6 @@ package com.leadtech.lookbook.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +13,8 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -22,8 +23,9 @@ import lombok.Data;
 public class Lookbook {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long id;
+	
+	@NotEmpty(message = "Nome do lookbook é obrigatório")
 	private String nome;
 	
 	@Column(name = "data_criacao")
@@ -37,6 +39,7 @@ public class Lookbook {
     )
 
 	@Valid
+	@Size(min = 1, message = "É necessário selecionar pelo menos uma peça")
 	private List<ClothingItem> clothingItems;
 	
 	@Override

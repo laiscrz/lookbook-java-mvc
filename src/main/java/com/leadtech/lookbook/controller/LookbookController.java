@@ -1,16 +1,23 @@
 package com.leadtech.lookbook.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.leadtech.lookbook.model.ClothingItem;
 import com.leadtech.lookbook.model.Lookbook;
 import com.leadtech.lookbook.service.ClothingItemService;
 import com.leadtech.lookbook.service.LookbookService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class LookbookController {
@@ -35,9 +42,21 @@ public class LookbookController {
 	}
 
 	@PostMapping("/lookbooks")
-	public ModelAndView salvar(@ModelAttribute Lookbook lookbook) {
+	public String salvarLookbook(@Valid @ModelAttribute("lookbook") Lookbook lookbook, BindingResult result,
+			Model model) {
+		if (result.hasErrors()) {
+			// Carregar a lista de clothingItems novamente, caso tenha erros, para exibir no
+			// formulário
+			List<ClothingItem> clothingItems = clothingItemService.listarTodos();
+			model.addAttribute("clothingItems", clothingItems);
+
+			return "lookbook/form"; // Retorne o template do formulário novamente com os erros
+		}
+
+		// Caso não haja erros, salve o lookbook
 		lookbookService.salvar(lookbook);
-		return new ModelAndView("redirect:/lookbooks");
+
+		return "redirect:/lookbooks"; // Redirecione para a listagem de lookbooks após salvar
 	}
 
 	@GetMapping("/lookbooks/editar/{id}")
