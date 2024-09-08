@@ -1,55 +1,91 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Nova Peça de Roupa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1 class="my-4">Nova Peça de Roupa</h1>
-        <form th:action="@{/clothing}" th:object="${clothingItem}" method="post" class="form-group">
-            <input type="hidden" th:field="*{id}" />
-            
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" class="form-control" th:field="*{nome}" />
-            
-            <label for="categoria" class="mt-3">Categoria</label>
-            <select id="categoria" class="form-select" th:field="*{categoria}">
-                <option th:each="cat : ${categorias}" th:value="${cat}" th:text="${cat}"></option>
-            </select>
-            
-            <label for="cor" class="mt-3">Cor</label>
-            <input type="text" id="cor" class="form-control" th:field="*{cor}" />
-            
-            <label for="tamanho" class="mt-3">Tamanho</label>
-            <select id="tamanho" class="form-select" th:field="*{tamanho}">
-                <option th:each="size : ${tamanhos}" th:value="${size}" th:text="${size}"></option>
-            </select>
-            
-            <label for="imagemURL" class="mt-3">Imagem URL</label>
-            <input type="text" id="imagemURL" class="form-control" th:field="*{imagemURL}" />
-            
-            <label for="material" class="mt-3">Material</label>
-            <input type="text" id="material" class="form-control" th:field="*{material}" />
-            
-            <label for="marca" class="mt-3">Marca</label>
-            <input type="text" id="marca" class="form-control" th:field="*{marca}" />
-            
-            <label for="preco" class="mt-3">Preço</label>
-            <input type="number" step="0.01" id="preco" class="form-control" th:field="*{preco}" />
-            
-            <label for="sazonalidade" class="mt-3">Sazonalidade</label>
-            <select id="sazonalidade" class="form-select" th:field="*{sazonalidade}">
-                <option th:each="season : ${sazonalidades}" th:value="${season}" th:text="${season}"></option>
-            </select>
-            
-            <label for="padrao" class="mt-3">Padrão</label>
-            <select id="padrao" class="form-select" th:field="*{padrao}">
-                <option th:each="standard : ${padroes}" th:value="${standard}" th:text="${standard}"></option>
-            </select>
 
-            <button type="submit" class="btn btn-success mt-4">Salvar</button>
-        </form>
-    </div>
+<head>
+	<title>Nova Peça de Roupa</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="my-4">Nova Peça de Roupa</h1>
+		<form th:action="@{/clothing}" th:object="${clothingItem}" method="post" class="form-group">
+			<input type="hidden" th:field="*{id}" />
+
+			<!-- Campo Nome -->
+			<div class="mb-3">
+				<label for="nome" class="form-label">Nome</label>
+				<input type="text" id="nome" class="form-control" th:field="*{nome}" />
+				<div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+			</div>
+
+			<!-- Campo Categoria -->
+			<div class="mb-3">
+				<label for="categoria" class="form-label">Categoria</label>
+				<select id="categoria" class="form-select" th:field="*{categoria}">
+					<option th:each="cat : ${categorias}" th:value="${cat}" th:text="${cat}"></option>
+				</select>
+				<div class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
+			</div>
+
+			<!-- Campo Cor -->
+			<div class="mb-3">
+				<label for="cor" class="form-label">Cor</label>
+				<input type="text" id="cor" class="form-control" th:field="*{cor}" />
+				<div class="text-danger" th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></div>
+			</div>
+
+			<!-- Campo Tamanho -->
+			<div class="mb-3">
+				<label for="tamanho" class="form-label">Tamanho</label>
+				<select id="tamanho" class="form-select" th:field="*{tamanho}">
+					<option th:each="tam : ${tamanhos}" th:value="${tam}" th:text="${tam}"></option>
+				</select>
+				<div class="text-danger" th:if="${#fields.hasErrors('tamanho')}" th:errors="*{tamanho}"></div>
+			</div>
+
+			<!-- Campo Imagem URL -->
+			<div class="mb-3">
+				<label for="imagemURL" class="form-label">Imagem URL</label>
+				<input type="text" id="imagemURL" class="form-control" th:field="*{imagemURL}" />
+			</div>
+
+			<!-- Campo Material -->
+			<div class="mb-3">
+				<label for="material" class="form-label">Material</label>
+				<input type="text" id="material" class="form-control" th:field="*{material}" />
+				<div class="text-danger" th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></div>
+			</div>
+
+			<!-- Campo Marca -->
+			<div class="mb-3">
+				<label for="marca" class="form-label">Marca</label>
+				<input type="text" id="marca" class="form-control" th:field="*{marca}" />
+				<div class="text-danger" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></div>
+			</div>
+
+			<!-- Campo Preço -->
+			<div class="mb-3">
+				<label for="preco" class="form-label">Preço</label>
+				<input type="number" step="0.01" id="preco" class="form-control" th:field="*{preco}" />
+				<div class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></div>
+			</div>
+
+			<!-- Campo Sazonalidade -->
+			<label for="sazonalidade" class="mt-3">Sazonalidade</label>
+			<select id="sazonalidade" class="form-select" th:field="*{sazonalidade}">
+				<option th:each="season : ${sazonalidades}" th:value="${season}" th:text="${season}"></option>
+			</select>
+
+			<!-- Campo Padrão -->
+			<label for="padrao" class="mt-3">Padrão</label>
+			<select id="padrao" class="form-select" th:field="*{padrao}">
+				<option th:each="standard : ${padroes}" th:value="${standard}" th:text="${standard}"></option>
+			</select>
+
+			<button type="submit" class="btn btn-success mt-4">Salvar</button>
+		</form>
+	</div>
 </body>
+
 </html>
