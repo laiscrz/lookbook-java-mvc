@@ -8,6 +8,7 @@
     <div class="container">
         <h1 class="my-4">Nova Peça de Roupa</h1>
         <form th:action="@{/clothing}" th:object="${clothingItem}" method="post" class="form-group">
+            <input type="hidden" th:field="*{id}" />
             <label for="nome">Nome</label>
             <input type="text" id="nome" class="form-control" th:field="*{nome}" />
             <label for="categoria" class="mt-3">Categoria</label>

@@ -18,8 +18,15 @@ public class LookbookService {
     }
 
     public void salvar(Lookbook lookbook) {
-        lookbookRepository.save(lookbook);
+        if (lookbook.getId() != null) {
+            // Atualizar o Lookbook existente
+            lookbookRepository.save(lookbook);
+        } else {
+            // Criar um novo Lookbook
+            lookbookRepository.save(lookbook);
+        }
     }
+
 
     public Lookbook buscarPorId(Long id) {
         return lookbookRepository.findById(id).orElse(null);
