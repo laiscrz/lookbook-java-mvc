@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leadtech.lookbook.model.ClothingItem;
+import com.leadtech.lookbook.model.ListaCategoria;
+import com.leadtech.lookbook.model.ListaPadrao;
+import com.leadtech.lookbook.model.ListaSazonalidade;
+import com.leadtech.lookbook.model.ListaTamanho;
 import com.leadtech.lookbook.service.ClothingItemService;
 
 @Controller
@@ -54,5 +58,26 @@ public class ClothingItemController {
         ModelAndView mv = new ModelAndView("clothing/details");
         mv.addObject("clothingItem", clothingItemService.buscarPorId(id));
         return mv;
+    }
+    
+    
+    @ModelAttribute("categorias")
+    public ListaCategoria[] getCategorias() {
+        return ListaCategoria.values();
+    }
+
+    @ModelAttribute("tamanhos")
+    public ListaTamanho[] getTamanhos() {
+        return ListaTamanho.values();
+    }
+
+    @ModelAttribute("sazonalidades")
+    public ListaSazonalidade[] getSazonalidades() {
+        return ListaSazonalidade.values();
+    }
+
+    @ModelAttribute("padroes")
+    public ListaPadrao[] getPadroes() {
+        return ListaPadrao.values();
     }
 }
