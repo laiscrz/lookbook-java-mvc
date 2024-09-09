@@ -47,6 +47,11 @@ Durante o desenvolvimento, surgiram alguns desafios que foram superados ao longo
 - Visualização Detalhada: Exibe informações detalhadas sobre cada lookbook e suas peças associadas, incluindo imagens e valores.
 
 
+## Próximos passos 
+- Fluxo de Autenticação do cliente
+- Refatoração da estilização dos templates (dar uma melhorada)
+- Tratamento de upload da  imagem no cadastro de peça
+- Implementação com nossa IA que faz sugestão de lookbooks
 
 ### Integrantes do grupo
 <table>
