@@ -36,6 +36,11 @@ Durante o desenvolvimento, surgiram alguns desafios que foram superados ao longo
 
 - Problemas de Recursão: Enfrentamos um problema de recursão nos métodos toString() das classes de modelo Lookbook e ClothingItem, que foi corrigido com a implementação adequada do método.
 
+## MER/DER
+
+![image](https://github.com/user-attachments/assets/94ffbde2-404f-4451-8abe-4633da84cf34)
+
+
 ## 🌐 Funcionalidades Principais
 - CRUD de Lookbooks: O usuário pode criar, editar, visualizar detalhes e deletar lookbooks.
 - CRUD de Peças de Roupa: O usuário pode gerenciar suas peças de roupa associadas aos lookbooks.
