@@ -3,6 +3,8 @@ package com.leadtech.lookbook.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +30,8 @@ public class Lookbook {
 	@NotEmpty(message = "Nome do lookbook é obrigatório")
 	private String nome;
 	
-	@Column(name = "data_criacao")
+	@CreationTimestamp
+	@Column(name = "data_criacao", updatable = false)
 	private LocalDate dataCriacao;
 	
 	@ManyToMany

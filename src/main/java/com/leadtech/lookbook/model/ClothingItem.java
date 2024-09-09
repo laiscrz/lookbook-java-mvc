@@ -3,6 +3,8 @@ package com.leadtech.lookbook.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -58,7 +60,8 @@ public class ClothingItem {
     @Enumerated(EnumType.STRING)
     private ListaPadrao padrao;
 
-    @Column(name = "data_cadastro")
+    @CreationTimestamp
+    @Column(name = "data_cadastro", updatable = false)
     private LocalDate dataCadrasto;
 
     @NotNull(message = "Sazonalidade é obrigatória")
