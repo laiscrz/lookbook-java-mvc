@@ -36,9 +36,9 @@ public class Lookbook {
 	
 	@ManyToMany
     @JoinTable(
-        name = "lookbook_clothing_item", // Tabela de junção para n:n
-        joinColumns = @JoinColumn(name = "lookbook_id"), // Chave estrangeira da tabela Lookbook
-        inverseJoinColumns = @JoinColumn(name = "clothing_item_id") // Chave estrangeira da tabela ClothingItem
+        name = "lookbook_clothing_item", // Tabela associativa  para n:n
+        joinColumns = @JoinColumn(name = "lookbook_id"), // pk tabela Lookbook
+        inverseJoinColumns = @JoinColumn(name = "clothing_item_id") // pk tabela ClothingItem
     )
 
 	@Valid

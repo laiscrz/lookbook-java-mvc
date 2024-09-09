@@ -21,10 +21,10 @@ public class ClothingItemService {
     public void salvar(ClothingItem clothingItem) {
     	
     	if (clothingItem.getId() != null) {
-            // Atualizar o Lookbook existente
+            // Atualizar a peça de roupa existente
     		clothingItemRepository.save(clothingItem);
         } else {
-            // Criar um novo Lookbook
+            // Cadastrar uma nova peça de roupa
         	clothingItemRepository.save(clothingItem);
         }
         

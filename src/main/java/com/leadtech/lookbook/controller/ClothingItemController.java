@@ -32,7 +32,7 @@ public class ClothingItemController {
         return mv;
     }
 
-    // Exibir formulário para criar uma nova peça de roupa
+    // Exibir formulário para cadastrar uma nova peça de roupa
     @GetMapping("/clothing/novo")
     public ModelAndView novoForm() {
         ModelAndView mv = new ModelAndView("clothing/form");
@@ -40,14 +40,14 @@ public class ClothingItemController {
         return mv;
     }
 
-    // Salvar a nova peça de roupa ou as alterações feitas
+    // Salvar a nova peça de roupa ou salvar as alterações feitas
     @PostMapping("/clothing")
     public ModelAndView salvar(@Valid @ModelAttribute ClothingItem clothingItem, BindingResult result) {
         if (result.hasErrors()) {
-            return new ModelAndView("clothing/form"); // Formulário com mensagens de erro
+            return new ModelAndView("clothing/form");
         }
         clothingItemService.salvar(clothingItem);
-        return new ModelAndView("redirect:/clothing"); // Redireciona para a listagem
+        return new ModelAndView("redirect:/clothing"); 
     }
 
     // Exibir o formulário para editar uma peça de roupa existente
@@ -61,12 +61,11 @@ public class ClothingItemController {
     // Deletar uma peça de roupa pelo ID
     @GetMapping("/clothing/deletar/{id}")
     public ModelAndView deletar(@PathVariable Long id) {
-        ModelAndView mv = new ModelAndView("clothing/list"); // Alterado para carregar a página de listagem
+        ModelAndView mv = new ModelAndView("clothing/list"); 
         try {
             clothingItemService.deletar(id);
-            mv.setViewName("redirect:/clothing"); // Redirecionar se a exclusão for bem-sucedida
+            mv.setViewName("redirect:/clothing"); // Redireciona caso a exclusão seja bem-sucedida
         } catch (Exception e) {
-            // Captura a exceção de integridade referencial
             mv.addObject("clothingItems", clothingItemService.listarTodos()); // Carrega a lista de itens novamente
             mv.addObject("errorMessage", "A peça está vinculada a um lookbook. Remova-a do lookbook primeiro antes de excluir.");
         }
@@ -83,25 +82,25 @@ public class ClothingItemController {
         return mv;
     }
 
-    // Popula as categorias no model de todos os métodos
+    // Popula as categorias no model
     @ModelAttribute("categorias")
     public ListaCategoria[] getCategorias() {
         return ListaCategoria.values();
     }
 
-    // Popula os tamanhos no model de todos os métodos
+    // Popula os tamanhos no model
     @ModelAttribute("tamanhos")
     public ListaTamanho[] getTamanhos() {
         return ListaTamanho.values();
     }
 
-    // Popula as sazonalidades no model de todos os métodos
+    // Popula as sazonalidades no model 
     @ModelAttribute("sazonalidades")
     public ListaSazonalidade[] getSazonalidades() {
         return ListaSazonalidade.values();
     }
 
-    // Popula os padrões no model de todos os métodos
+    // Popula os padrões no model
     @ModelAttribute("padroes")
     public ListaPadrao[] getPadroes() {
         return ListaPadrao.values();

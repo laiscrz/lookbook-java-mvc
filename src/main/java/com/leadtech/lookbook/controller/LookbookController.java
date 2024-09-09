@@ -45,18 +45,17 @@ public class LookbookController {
 	public String salvarLookbook(@Valid @ModelAttribute("lookbook") Lookbook lookbook, BindingResult result,
 			Model model) {
 		if (result.hasErrors()) {
-			// Carregar a lista de clothingItems novamente, caso tenha erros, para exibir no
-			// formulário
+			// Carregar a lista de clothingItems novamente, caso tenha erros, para exibir msg no forms
 			List<ClothingItem> clothingItems = clothingItemService.listarTodos();
 			model.addAttribute("clothingItems", clothingItems);
 
-			return "lookbook/form"; // Retorne o template do formulário novamente com os erros
+			return "lookbook/form";
 		}
 
-		// Caso não haja erros, salve o lookbook
+		// Caso não tenha erros salva o lookbook
 		lookbookService.salvar(lookbook);
 
-		return "redirect:/lookbooks"; // Redirecione para a listagem de lookbooks após salvar
+		return "redirect:/lookbooks"; 
 	}
 
 	@GetMapping("/lookbooks/editar/{id}")
@@ -75,7 +74,7 @@ public class LookbookController {
 	
 	@GetMapping("/lookbooks/detalhes/{id}")
 	public ModelAndView detalhesLookbook(@PathVariable Long id) {
-	    Lookbook lookbook = lookbookService.buscarPorId(id); // Supondo que o método `buscarPorId` já existe no seu service.
+	    Lookbook lookbook = lookbookService.buscarPorId(id);
 	    ModelAndView mv = new ModelAndView("lookbook/details");
 	    mv.addObject("lookbook", lookbook);
 	    return mv;
