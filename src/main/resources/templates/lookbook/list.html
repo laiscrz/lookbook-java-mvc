@@ -24,6 +24,7 @@
                         </ul>
                     </td>
                     <td>
+                        <a th:href="@{'/lookbooks/detalhes/' + ${lookbook.id}}" class="btn btn-info btn-sm">Detalhes</a>
                         <a th:href="@{'/lookbooks/editar/' + ${lookbook.id}}" class="btn btn-primary btn-sm">Editar</a>
                         <a th:href="@{'/lookbooks/deletar/' + ${lookbook.id}}" class="btn btn-danger btn-sm">Deletar</a>
                     </td>
@@ -31,7 +32,7 @@
             </tbody>
         </table>
         <a href="/lookbooks/novo" class="btn btn-success mt-3">Adicionar Novo Lookbook</a>
-		<a href="/clothing" class="btn btn-primary mt-3">Lista de Peças</a>
+        <a href="/clothing" class="btn btn-primary mt-3">Lista de Peças</a>
     </div>
 </body>
 </html>

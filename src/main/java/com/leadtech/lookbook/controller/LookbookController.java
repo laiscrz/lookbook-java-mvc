@@ -72,4 +72,13 @@ public class LookbookController {
 		lookbookService.deletar(id);
 		return new ModelAndView("redirect:/lookbooks");
 	}
+	
+	@GetMapping("/lookbooks/detalhes/{id}")
+	public ModelAndView detalhesLookbook(@PathVariable Long id) {
+	    Lookbook lookbook = lookbookService.buscarPorId(id); // Supondo que o método `buscarPorId` já existe no seu service.
+	    ModelAndView mv = new ModelAndView("lookbook/details");
+	    mv.addObject("lookbook", lookbook);
+	    return mv;
+	}
+
 }

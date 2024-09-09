@@ -49,6 +49,12 @@ public class Lookbook {
 	            ", nome='" + nome + '\'' +
 	            '}';
 	}
+	
+    public double getValorTotal() {
+        return clothingItems.stream()
+            .mapToDouble(ClothingItem::getPreco)
+            .sum();
+    }
 
 
 }
