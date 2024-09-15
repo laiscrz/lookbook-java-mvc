@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leadtech.lookbook.model.ClothingItem;
-import com.leadtech.lookbook.model.Lookbook;
 import com.leadtech.lookbook.repository.ClothingItemRepository;
 
 @Service
