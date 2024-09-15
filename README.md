@@ -20,6 +20,7 @@ A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo aj
   │   └── resources/
   │       ├── templates/
   │       └── application.properties
+  │       └── import.sql
   └── test/
 ```
 
@@ -30,32 +31,31 @@ A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo aj
 - **Banco de Dados**: Oracle Cloud ☁️
 - **Hospedagem**: Azure App Service 🌟
 
-## 🛠️ Instalação e Execução
+---
 
-1. **Clone o Repositório** 🧑‍💻
+## 🛤️ Rotas da Aplicação
 
-   ```bash
-   git clone https://github.com/laiscrz/lookbook-java-mvc.git
-   cd lookbook-java-mvc
-   ```
+### Rota para Peças de Roupa (`ClothingItemController`)
 
-2. **Configure o Banco de Dados** 🗃️
+- **Listar Peças**: `GET /clothing` - Exibe uma lista de todas as peças de roupa.
+- **Novo Formulário**: `GET /clothing/novo` - Exibe o formulário para adicionar uma nova peça de roupa.
+- **Salvar/Atualizar**: `POST /clothing` - Salva uma nova peça de roupa ou atualiza uma existente.
+- **Editar**: `GET /clothing/editar/{id}` - Exibe o formulário para editar uma peça de roupa existente.
+- **Deletar**: `GET /clothing/deletar/{id}` - Remove uma peça de roupa pelo ID.
+- **Detalhes**: `GET /clothing/detalhes/{id}` - Exibe detalhes de uma peça de roupa específica.
 
-   - Certifique-se de que o Oracle Database está em execução e acessível.
-   - Atualize as configurações de banco de dados no arquivo `src/main/resources/application.properties` com as credenciais do seu banco de dados.
+### Rota para Lookbooks (`LookbookController`)
 
-3. **Compile e Execute a Aplicação** 🚀
+- **Listar Lookbooks**: `GET /lookbooks` - Exibe uma lista de todos os lookbooks.
+- **Novo Formulário**: `GET /lookbooks/novo` - Exibe o formulário para adicionar um novo lookbook.
+- **Salvar/Atualizar**: `POST /lookbooks` - Salva um novo lookbook ou atualiza um existente.
+- **Editar**: `GET /lookbooks/editar/{id}` - Exibe o formulário para editar um lookbook existente.
+- **Deletar**: `GET /lookbooks/deletar/{id}` - Remove um lookbook pelo ID.
+- **Detalhes**: `GET /lookbooks/detalhes/{id}` - Exibe detalhes de um lookbook específico.
 
-   ```bash
-   ./mvnw clean package
-   ./mvnw spring-boot:run
-   ```
+---
 
-4. **Acesse a Aplicação** 🌐
-
-   Navegue até `http://localhost:8080` no seu navegador para acessar a aplicação.
-
-## 🛠️ Deploy no Azure
+## 🚀 Deploy no Azure
 
 ### Passo a Passo
 
@@ -69,27 +69,101 @@ A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo aj
 
    - **Nome**: `LookbooksAppPlan`
    - No portal do Azure, vá para **Planos de Serviço do App** e clique em **Adicionar**.
-   - Insira o nome do plano, selecione a região (deve corresponder ao grupo de recursos), e escolha o plano de tarifa adequado para sua aplicação.
+   - Insira o nome do plano, selecione a região (que deve ser a mesma do grupo de recursos) e escolha o plano de tarifa **Free** para economizar recursos.
 
 3. **Crie um Web Service App** 🌐
 
    - **Nome**: `AppLookbooks`
    - No portal do Azure, vá para **Aplicativos de Serviço** e clique em **Adicionar**.
-   - Insira o nome do aplicativo, selecione o grupo de recursos `rg-lookbook`, e escolha o plano de serviço do app `LookbooksAppPlan`.
+   - Selecione o **grupo de recursos** `rg-lookbook` e o **plano de serviço** `LookbooksAppPlan`.
+   - Escolha o sistema operacional **Windows** e a versão do **Java 17** para o runtime.
 
 4. **Configure o Deploy** ⚙️
 
-   - No portal do Azure, acesse o aplicativo criado em **Aplicativos de Serviço**.
-   - Vá para **Deployment Center** e configure o repositório GitHub para o deploy contínuo.
-   - Configure a autenticação e selecione o branch do GitHub que você deseja usar para deploy.
+   - Durante a criação do Web App, selecione **GitHub Actions** como método de deploy contínuo.
+   - Conecte sua conta do GitHub, selecione o **repositório** correto e o **branch** para o deploy.
+   - O Azure gerará um arquivo **YAML** para o workflow do GitHub Actions, configurando o processo de build e deploy.
 
 5. **Faça o Deploy** 🚀
 
-   - Com as configurações prontas, o Azure automaticamente fará o deploy da sua aplicação sempre que houver uma atualização no branch configurado.
+   - O deploy será iniciado automaticamente via **GitHub Actions** após atualizações no branch configurado.
+   - Acompanhe o progresso no **Deployment Center** ou no **GitHub Actions**.
 
 6. **Verifique a Aplicação** 🔍
 
-   - Após o deploy, vá para a URL fornecida pelo Azure para verificar se a aplicação está funcionando corretamente.
+   - Após o deploy, o Azure fornecerá uma URL para acessar a aplicação.
+   - Acesse a URL (ex: `https://applookbooks.azurewebsites.net/lookbooks`) para verificar a funcionalidade.
+
+---
+
+## Testes do CRUD 📝
+
+### 1. Criação (Create) ✏️
+
+- Insira novos registros de lookbooks através da interface da aplicação.
+- **Exemplo**: Adicione um novo **lookbook** com as seguintes informações:
+  
+  **Dados do Lookbook**:
+  ```plaintext
+  Nome: Look Primavera Casual
+  ```
+
+  **Dados do Item de Roupa**:
+  ```plaintext
+  Nome: Camiseta Ciganinha
+  Categoria: CAMISETA
+  Cor: Preta
+  Tamanho: M
+  URL da Imagem: https://abrir.link/ivTDX
+  Material: Viscose
+  Marca: Forever 21
+  Padrão: LISO
+  Preço: R$ 69,90
+  Sazonalidade: PRIMAVERA
+  ```
+
+### 2. Leitura (Read) 📖
+
+- Verifique se os dados inseridos são exibidos corretamente na aplicação.
+- **Exemplo**: Após criar o lookbook, confira se todas as informações (nome, itens de roupa, etc.) estão sendo exibidas corretamente na página.
+
+### 3. Atualização (Update) ✍️
+
+- Edite registros existentes e confirme que as alterações foram salvas corretamente.
+- **Exemplo**: Modifique o nome do lookbook e o item de roupa para:
+
+  **Novo Nome do Lookbook**:
+  ```plaintext
+  Nome: Look Outono Casual
+  ```
+
+  **Dados Atualizados do Item de Roupa**:
+  ```plaintext
+  Nome: Camiseta Ciganinha Estilizada
+  Categoria: CAMISETA
+  Cor: Preta
+  Tamanho: G
+  URL da Imagem: https://abrir.link/nova-imagem
+  Material: Algodao
+  Marca: Zara
+  Padrão: ABSTRATO
+  Preço: R$ 89,90
+  Sazonalidade: OUTONO
+  ```
+
+### 4. Exclusão (Delete) 🗑️
+
+- Exclua registros e verifique se eles foram removidos do banco de dados.
+- **Exemplo**: Delete o lookbook **Look Outono Casual** e seus respectivos itens de roupa, certifique-se de que eles não aparece mais na lista de lookbooks e nas peças disponíveis.
+
+### 5. Validação ✅
+
+- Certifique-se de que todas as operações estão funcionando conforme esperado e sem erros.
+- Use as consultas no próprio SQL Developer.
+
+
+--- 
+
 
 ## 📊 MER/DER
 
@@ -97,7 +171,7 @@ A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo aj
 
 ## 🛠️ Integração Contínua com GitHub Actions
 
-Este projeto utiliza o GitHub Actions para automação do fluxo de trabalho de desenvolvimento. A configuração de CI/CD é definida no arquivo `.github/workflows/ci.yml`, que executa os seguintes passos:
+Este projeto utiliza o GitHub Actions para automação do fluxo de trabalho de desenvolvimento. A configuração de CI/CD é definida no arquivo `.github/workflows/main_applookbooks.yml`, que executa os seguintes passos:
 
 - **Compilação do Projeto**: Compila o código-fonte e executa os testes automatizados. 🧪
 - **Deploy Automatizado**: Publica a aplicação no Azure App Service. 🚀
