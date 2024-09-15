@@ -143,7 +143,7 @@ A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo aj
   Categoria: CAMISETA
   Cor: Preta
   Tamanho: G
-  URL da Imagem: https://abrir.link/nova-imagem
+  URL da Imagem: https://abrir.link/ivTDX
   Material: Algodao
   Marca: Zara
   Padrão: ABSTRATO
