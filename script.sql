@@ -14,9 +14,9 @@ Lucca Raphael Pereira dos Santos - RM 99675 - Turma : 2TDSPZ
 */
 
 /*DROPS*/
-DROP TABLE IF EXISTS clothing_item CASCADE CONSTRAINTS;
-DROP TABLE IF EXISTS lookbook CASCADE CONSTRAINTS;
-DROP TABLE IF EXISTS lookbook_clothing_item CASCADE CONSTRAINTS;
+DROP TABLE clothing_item CASCADE CONSTRAINTS;
+DROP TABLE lookbook CASCADE CONSTRAINTS;
+DROP TABLE lookbook_clothing_item CASCADE CONSTRAINTS;
 
 -- DDL para tabela clothing_item
 CREATE TABLE clothing_item (
