@@ -29,7 +29,7 @@ CREATE TABLE clothing_item (
     marca VARCHAR2(255 CHAR) NOT NULL,
     material VARCHAR2(255 CHAR) NOT NULL,
     nome VARCHAR2(255 CHAR) NOT NULL,
-    padrao VARCHAR2(255 CHAR) NOT NULL CHECK (padrao IN ('LISTRADO', 'FLORAL', 'XADREZ', 'POÁ', 'LISO', 'ABSTRATO', 'GEOMETRICO', 'ANIMAL_PRINT', 'ESTAMPADO')),
+    padrao VARCHAR2(255 CHAR) NOT NULL CHECK (padrao IN ('LISTRADO', 'FLORAL', 'XADREZ', 'POA', 'LISO', 'ABSTRATO', 'GEOMETRICO', 'ANIMAL_PRINT', 'ESTAMPADO')),
     sazonalidade VARCHAR2(255 CHAR) NOT NULL CHECK (sazonalidade IN ('VERÃO', 'INVERNO', 'PRIMAVERA', 'OUTONO')),
     tamanho VARCHAR2(255 CHAR) NOT NULL CHECK (tamanho IN ('PP', 'P', 'M', 'G', 'GG', 'XG'))
     -- Comentário: Tabela de itens de vestuário.
