@@ -58,7 +58,7 @@ CREATE TABLE lookbook_clothing_item (
 
 -- 5 INSERTS EM CADA TABELA
 /* TABELA: clothing_item*/
-- Peca de Roupa 1
+-- Peca de Roupa 1
 INSERT INTO clothing_item (nome, categoria, cor, tamanho, imagem_url, material, marca, padrao, preco, data_cadastro, sazonalidade) VALUES ('Camiseta Branca', 'CAMISETA', 'Branco', 'M', 'https://abrir.link/DwOYl', 'Algodao', 'Nike', 'LISO', 49.90, TO_DATE('2024-09-01', 'YYYY-MM-DD'), 'VERAO');
 
 -- Peca de Roupa 2
