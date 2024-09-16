@@ -199,7 +199,7 @@ Você pode encontrar o arquivo [script.sql](script.sql) na raiz do repositório.
 ## 📄 Documentação Adicional
 
 - **Código Fonte**: [GitHub Repository](https://github.com/laiscrz/lookbook-java-mvc) 📁
-- **Vídeo de Demonstração**: [YouTube Video](https://www.youtube.com/link-para-o-video) 📹
+- **Vídeo de Demonstração**: [YouTube Video](https://www.youtube.com/watch?v=ulcJiaUOERA) 📹
 
 ## 🫂 Integrantes
 
