@@ -1,4 +1,4 @@
-# 👗📚 Gerenciamento de Lookbooks Personalizados
+# 👗 Gerenciamento de Lookbooks Personalizados
 
 A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo ajudar os usuários a gerenciar seus lookbooks de forma fácil e intuitiva. O sistema permite a criação, edição, visualização e exclusão de lookbooks, além de associar peças de roupa a eles, ajudando o usuário a montar looks personalizados de acordo com suas preferências.
 
@@ -35,23 +35,34 @@ A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo aj
 
 ## 🛤️ Rotas da Aplicação
 
+### Rota para Página Inicial (Home)
+
+- **Página Inicial**: Acesse a página principal da aplicação com o conteúdo inicial. 🏠
+  
+    ```plaintext
+    GET /
+    ```
+- Essa rota exibe a página `index.html`, que contém um ponto de entrada para o usuário acessar todas as funcionalidades do sistema.
+  
+    - **Exemplo**: Acesse `https://applookbooks.azurewebsites.net/` para visualizar a página inicial com opções de gerenciamento de Lookbooks e Peças de Roupa.
+
 ### Rota para Peças de Roupa (`ClothingItemController`)
 
-- **Listar Peças**: `GET /clothing` - Exibe uma lista de todas as peças de roupa.
-- **Novo Formulário**: `GET /clothing/novo` - Exibe o formulário para adicionar uma nova peça de roupa.
-- **Salvar/Atualizar**: `POST /clothing` - Salva uma nova peça de roupa ou atualiza uma existente.
-- **Editar**: `GET /clothing/editar/{id}` - Exibe o formulário para editar uma peça de roupa existente.
-- **Deletar**: `GET /clothing/deletar/{id}` - Remove uma peça de roupa pelo ID.
-- **Detalhes**: `GET /clothing/detalhes/{id}` - Exibe detalhes de uma peça de roupa específica.
+- **Listar Peças**: `GET /clothing` - Exibe uma lista de todas as peças de roupa. 👕👗
+- **Novo Formulário**: `GET /clothing/novo` - Exibe o formulário para adicionar uma nova peça de roupa. ➕👔
+- **Salvar/Atualizar**: `POST /clothing` - Salva uma nova peça de roupa ou atualiza uma existente. 💾✏️
+- **Editar**: `GET /clothing/editar/{id}` - Exibe o formulário para editar uma peça de roupa existente. 📝👚
+- **Deletar**: `GET /clothing/deletar/{id}` - Remove uma peça de roupa pelo ID. 🗑️
+- **Detalhes**: `GET /clothing/detalhes/{id}` - Exibe detalhes de uma peça de roupa específica. 🔍🛍️
 
 ### Rota para Lookbooks (`LookbookController`)
 
-- **Listar Lookbooks**: `GET /lookbooks` - Exibe uma lista de todos os lookbooks.
-- **Novo Formulário**: `GET /lookbooks/novo` - Exibe o formulário para adicionar um novo lookbook.
-- **Salvar/Atualizar**: `POST /lookbooks` - Salva um novo lookbook ou atualiza um existente.
-- **Editar**: `GET /lookbooks/editar/{id}` - Exibe o formulário para editar um lookbook existente.
-- **Deletar**: `GET /lookbooks/deletar/{id}` - Remove um lookbook pelo ID.
-- **Detalhes**: `GET /lookbooks/detalhes/{id}` - Exibe detalhes de um lookbook específico.
+- **Listar Lookbooks**: `GET /lookbooks` - Exibe uma lista de todos os lookbooks. 📚👗
+- **Novo Formulário**: `GET /lookbooks/novo` - Exibe o formulário para adicionar um novo lookbook. ➕📒
+- **Salvar/Atualizar**: `POST /lookbooks` - Salva um novo lookbook ou atualiza um existente. 💾✏️
+- **Editar**: `GET /lookbooks/editar/{id}` - Exibe o formulário para editar um lookbook existente. 📝📖
+- **Deletar**: `GET /lookbooks/deletar/{id}` - Remove um lookbook pelo ID. 🗑️
+- **Detalhes**: `GET /lookbooks/detalhes/{id}` - Exibe detalhes de um lookbook específico. 🔍👗
 
 ---
 
@@ -92,7 +103,7 @@ A aplicação **Gerenciamento de Lookbooks Personalizados** tem como objetivo aj
 6. **Verifique a Aplicação** 🔍
 
    - Após o deploy, o Azure fornecerá uma URL para acessar a aplicação.
-   - Acesse a URL (ex: `https://applookbooks.azurewebsites.net/lookbooks`) para verificar a funcionalidade.
+   - Acesse a URL (ex: `https://applookbooks.azurewebsites.net`) para vearificar a funcionalidade.
 
 ---
 
